@@ -394,7 +394,7 @@
                 <div class="col-md-4"><div class="glow-border text-dark p-3 rounded" style="background:var(--lightest);"><strong>🎂 Age:</strong> Your Age</div></div>
                 <div class="col-md-4"><div class="glow-border text-dark p-3 rounded" style="background:var(--lightest);"><strong>💼 Profession:</strong> Current Status</div></div>
             </div>
-            <p class="fs-6 fw-semibold mb-3" style="color:var(--primary);">📌 Save My Number: 7991096165</p>
+            <p class="fs-6 fw-semibold mb-3" style="color:var(--primary);">📌 Save My Number: +91 89842 04935</p>
             <button class="open-any glow-pulse" style="background:var(--white);color:var(--primary);border:1px solid var(--primary);">📲 Message on WhatsApp Now</button>
             <div class="text-center mt-4">
                 <!-- UPDATED INSTAGRAM LINK -->
@@ -521,7 +521,7 @@
     const privacyBtn=document.getElementById('privacyBtn');
     const closePrivacyBtn=document.getElementById('closePrivacyBtn');
     const SCRIPT_URL="https://script.google.com/macros/s/AKfycbxiihA5lJXMtKIrAxY360eGG1AaozscdV9frZt-SVdXETprkNG_a-acjaLSqWa6l1kCgg/exec";
-    const WA_NUMBER_INT="917995244690";
+    const WA_NUMBER_INT="918984204935";
 
     function openForm(source='site'){
         sourceInfo.value=source;
@@ -563,7 +563,7 @@
         formData.append('name',name);formData.append('phone',phone);formData.append('age',age);formData.append('gender',gender);formData.append('profession',profession);formData.append('source',sourceInfo.value);formData.append('timestamp',new Date().toISOString());
         fetch(SCRIPT_URL,{method:'POST',body:formData,mode:'no-cors'}).catch(()=>{});
         const msg=encodeURIComponent(`Hello Ma'am,\n\nI am interested in your women-only program. Here are my details:\n\nName: ${name}\nPhone: ${phone}\nAge: ${age}\nGender: ${gender}\nProfession: ${profession}\n\nPlease share next steps. Thank you!`);
-        // Only Contact tracking - NO Lead tracking
+        // Only Contact tracking - NO Lead tracking (cost kam karne ke liye)
         if(typeof fbq!=='undefined'){fbq('track','Contact');}
         window.open(`https://wa.me/${WA_NUMBER_INT}?text=${msg}`,'_blank');
         closeForm();
