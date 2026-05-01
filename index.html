@@ -40,19 +40,17 @@
     <!-- End Meta Pixel Code -->
 
     <style>
-        /* ===== NEW COLOR THEME ===== */
         :root {
-            --lightest: #E7F0FA;   /* page background */
-            --light:    #7BA4D0;   /* cards, borders */
-            --primary:  #2E5E99;   /* buttons, accents */
-            --darkest:  #0D2440;   /* text on light */
+            --lightest: #E7F0FA;
+            --light:    #7BA4D0;
+            --primary:  #2E5E99;
+            --darkest:  #0D2440;
             --white:    #FFFFFF;
             --shadow: 0 6px 20px rgba(46,94,153,.15);
             --shadow-hover: 0 10px 30px rgba(46,94,153,.25);
             --glow: 0 0 25px rgba(123,164,208,.5);
             --glow-intense: 0 0 40px rgba(123,164,208,.7);
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Inter', sans-serif;
@@ -61,14 +59,11 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-
-        /* Light Effects */
         @keyframes pulseGlow {
             0%,100%{box-shadow:0 0 20px rgba(123,164,208,.4);}
             50%{box-shadow:0 0 40px rgba(123,164,208,.8);}
         }
         .glow-pulse { animation: pulseGlow 2.5s infinite; }
-
         @keyframes shimmer {
             0%{background-position:-200% 0;}100%{background-position:200% 0;}
         }
@@ -79,14 +74,11 @@
             background-size:200% 100%;animation:shimmer 3s infinite linear;transform:rotate(30deg);opacity:0;transition:opacity .3s;
         }
         .shine-effect:hover::before{opacity:1;}
-
-        /* Pure-white stats card */
         .stats-white{
             background:var(--white)!important;
             color:var(--darkest)!important;
             border:1px solid var(--light);
         }
-
         .glow-border{
             border:2px solid transparent;
             background:linear-gradient(var(--white),var(--white)) padding-box,
@@ -94,7 +86,6 @@
             transition:all .4s;
         }
         .glow-border:hover{box-shadow:0 0 25px rgba(46,94,153,.4);transform:translateY(-3px);}
-
         .wa-btn{
             background:linear-gradient(135deg,var(--primary),var(--light));
             color:var(--white);
@@ -109,7 +100,6 @@
             box-shadow:var(--glow-intense),0 15px 30px rgba(46,94,153,.4);
         }
         .wa-btn:active{transform:translateY(0) scale(.98);}
-
         section{padding:50px 0;position:relative;}
         .hero-section{
             background: linear-gradient(135deg, var(--lightest), var(--light));
@@ -132,25 +122,19 @@
         }
         .stat-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);}
         .counter{font-size:2rem;font-weight:800;color:var(--primary);}
-
-        /* Feedback carousel */
         .feedback-viewport{overflow:hidden;margin:1.5rem 0;}
         .feedback-track{display:flex;gap:15px;width:max-content;animation:scrollLeft 30s linear infinite;}
         .feedback-track:hover{animation-play-state:paused;}
         @keyframes scrollLeft{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
         .feedback-item{flex-shrink:0;width:300px;height:auto;border-radius:15px;overflow:hidden;box-shadow:var(--shadow);background:#000;}
         .feedback-item img{width:100%;height:auto;display:block;}
-
         .step-card{background: var(--white); border-radius:15px;padding:1.5rem;box-shadow:var(--shadow);transition:all .4s;height:100%;}
         .step-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover);}
         .step-number{width:50px;height:50px;background:linear-gradient(135deg,var(--primary),var(--light));color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;flex-shrink:0;}
-
         .accordion-item{border:none;border-radius:10px !important;margin-bottom:.75rem;box-shadow:var(--shadow);}
         .accordion-button{background: var(--white); color:var(--darkest);font-weight:600;padding:1rem;}
         .accordion-button:not(.collapsed){background:linear-gradient(135deg,var(--lightest),var(--white));color:var(--primary);}
         .accordion-body{color:var(--darkest);}
-
-        /* Modal backdrops */
         .form-backdrop,.privacy-modal{position:fixed;inset:0;background:rgba(13,36,64,.8);backdrop-filter:blur(8px);z-index:9999;opacity:0;visibility:hidden;transition:all .4s;}
         .form-backdrop.show,.privacy-modal.show{opacity:1;visibility:visible;}
         #formContainer,#privacyContent{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.9);z-index:10000;max-width:500px;width:90%;max-height:85vh;opacity:0;visibility:hidden;transition:all .4s;background:var(--white);border:1px solid var(--primary);border-radius:15px;box-shadow:var(--glow-intense);}
@@ -158,7 +142,6 @@
         .form-card{box-shadow:0 0 40px rgba(46,94,153,.3);border:1px solid var(--primary);}
         .form-control,.form-select{background: var(--lightest); border:2px solid var(--light);color:var(--darkest);border-radius:8px;padding:.6rem .9rem;transition:all .3s;}
         .form-control:focus,.form-select:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(46,94,153,.15);}
-
         @media(max-width:768px){
             section{padding:40px 0;}
             .hero-section{padding:50px 0 30px;}
@@ -173,7 +156,6 @@
             .shine-effect::before,.feedback-track{animation:none !important;}
         }
     </style>
-<base target="_blank">
 <base target="_blank">
 <base target="_blank">
 </head>
@@ -214,7 +196,6 @@
         <div class="row g-4 align-items-center">
             <div class="col-lg-6">
                 <div class="wa-btn glow-pulse mb-3 d-inline-block">👇 See My Journey 👇</div>
-                <!-- FULL-SIZE IMAGE (no black bars) -->
                 <div class="rounded-3 overflow-hidden shadow-lg">
                     <img src="https://i.ibb.co/cnbLsjw/Screenshot-2025-12-30-at-1-39-46-PM.png" class="w-100" alt="Raushan Journey" loading="lazy">
                 </div>
@@ -249,13 +230,11 @@
         <p class="text-center text-muted mb-4">100% real feedback from women in our community</p>
         <div class="feedback-viewport">
             <div class="feedback-track">
-                <!-- 5 images + duplicate for loop -->
                 <div class="feedback-item"><img src="https://i.ibb.co/1YH3gjCf/raushan-1.jpg" alt="Student 1" loading="lazy"></div>
                 <div class="feedback-item"><img src="https://i.ibb.co/zWgCwNS6/raushan-2.jpg" alt="Student 2" loading="lazy"></div>
                 <div class="feedback-item"><img src="https://i.ibb.co/KxJgKnks/raushan-3.jpg" alt="Student 3" loading="lazy"></div>
                 <div class="feedback-item"><img src="https://i.ibb.co/nNj8Q452/raushan-4.jpg" alt="Student 4" loading="lazy"></div>
                 <div class="feedback-item"><img src="https://i.ibb.co/d0JWKkW6/raushan-5.jpg" alt="Student 5" loading="lazy"></div>
-                <!-- duplicate -->
                 <div class="feedback-item"><img src="https://i.ibb.co/1YH3gjCf/raushan-1.jpg" alt="Student 1" loading="lazy"></div>
                 <div class="feedback-item"><img src="https://i.ibb.co/zWgCwNS6/raushan-2.jpg" alt="Student 2" loading="lazy"></div>
                 <div class="feedback-item"><img src="https://i.ibb.co/KxJgKnks/raushan-3.jpg" alt="Student 3" loading="lazy"></div>
@@ -320,7 +299,7 @@
     </div>
 </section>
 
-<!-- ===== STATS (PURE WHITE) ===== -->
+<!-- ===== STATS ===== -->
 <section class="py-5" style="background: linear-gradient(135deg,var(--lightest),var(--white));">
     <div class="container">
         <h2 class="text-center display-5 fw-bold mb-4" style="color:var(--primary);">Know Your Coach</h2>
@@ -397,7 +376,6 @@
             <p class="fs-6 fw-semibold mb-3" style="color:var(--primary);">📌 Save My Number: +91 89842 04935</p>
             <button class="open-any glow-pulse" style="background:var(--white);color:var(--primary);border:1px solid var(--primary);">📲 Message on WhatsApp Now</button>
             <div class="text-center mt-4">
-                <!-- UPDATED INSTAGRAM LINK -->
                 <a href="https://www.instagram.com/__raushan.jahan.business__/?igsh=Ym03Z3l5N3YwZGlo#" target="_blank" class="btn btn-outline-dark btn-lg d-inline-flex align-items-center gap-2"><i data-lucide="instagram" width="24"></i>Follow on Instagram</a>
             </div>
         </div>
@@ -427,31 +405,24 @@
             <form id="mainForm" novalidate>
                 <input type="hidden" id="sourceInfo" name="sourceInfo">
                 <div class="row g-2">
-                    <!-- NAME -->
                     <div class="col-12">
                         <label class="form-label d-flex align-items-center gap-2">
                             <i data-lucide="user" style="width:16px;"></i> Full Name *
                         </label>
                         <input id="inp_name" type="text" class="form-control" required value="">
                     </div>
-
-                    <!-- PHONE -->
                     <div class="col-12">
                         <label class="form-label d-flex align-items-center gap-2">
                             <i data-lucide="phone" style="width:16px;"></i> Phone *
                         </label>
                         <input id="inp_phone" type="tel" class="form-control" required maxlength="10" value="">
                     </div>
-
-                    <!-- AGE -->
                     <div class="col-6">
                         <label class="form-label d-flex align-items-center gap-2">
                             <i data-lucide="calendar" style="width:16px;"></i> Age *
                         </label>
                         <input id="inp_age" type="number" class="form-control" required min="15" max="65" value="">
                     </div>
-
-                    <!-- GENDER -->
                     <div class="col-6">
                         <label class="form-label d-flex align-items-center gap-2">
                             <i data-lucide="users" style="width:16px;"></i> Gender *
@@ -462,8 +433,6 @@
                             <option value="other">Other</option>
                         </select>
                     </div>
-
-                    <!-- PROFESSION -->
                     <div class="col-12">
                         <label class="form-label d-flex align-items-center gap-2">
                             <i data-lucide="briefcase" style="width:16px;"></i> Profession *
@@ -475,7 +444,6 @@
                             <option>Other</option>
                         </select>
                     </div>
-
                     <div class="col-12">
                         <button type="submit" class="wa-btn w-100">📲 Send to WhatsApp</button>
                     </div>
@@ -490,7 +458,6 @@
 <script>
     lucide.createIcons();
 
-    /* Counter animation */
     const counters=document.querySelectorAll('.counter');
     const counterObserver=new IntersectionObserver((entries)=>{
         entries.forEach(entry=>{
@@ -511,7 +478,6 @@
     },{threshold:0.3});
     counters.forEach(c=>counterObserver.observe(c));
 
-    /* Form & Privacy logic */
     const formBackdrop=document.getElementById('formBackdrop');
     const formContainer=document.getElementById('formContainer');
     const mainForm=document.getElementById('mainForm');
@@ -520,7 +486,11 @@
     const privacyModal=document.getElementById('privacyModal');
     const privacyBtn=document.getElementById('privacyBtn');
     const closePrivacyBtn=document.getElementById('closePrivacyBtn');
-    const SCRIPT_URL="https://script.google.com/macros/s/AKfycbxiihA5lJXMtKIrAxY360eGG1AaozscdV9frZt-SVdXETprkNG_a-acjaLSqWa6l1kCgg/exec";
+
+    // ✅ UPDATED GOOGLE SHEET SCRIPT URL
+    const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzl5AGWqy82oYLOg6oueQmYXSLtXg0jO5GIiomPiwpEvN9LmTg3te3cjCfSWAtDQ0y4lA/exec";
+
+    // ✅ WHATSAPP NUMBER
     const WA_NUMBER_INT="918984204935";
 
     function openForm(source='site'){
@@ -559,12 +529,24 @@
         const gender=document.getElementById('inp_gender').value;
         const profession=document.getElementById('inp_profession').value;
         if(!name||phone.length<6||!age||!gender||!profession){alert('Please fill all fields correctly.');return;}
+
         const formData=new FormData();
-        formData.append('name',name);formData.append('phone',phone);formData.append('age',age);formData.append('gender',gender);formData.append('profession',profession);formData.append('source',sourceInfo.value);formData.append('timestamp',new Date().toISOString());
-        fetch(SCRIPT_URL,{method:'POST',body:formData,mode:'no-cors'}).catch(()=>{});
+        formData.append('name',name);
+        formData.append('phone',phone);
+        formData.append('age',age);
+        formData.append('gender',gender);
+        formData.append('profession',profession);
+        formData.append('source',sourceInfo.value);
+        formData.append('timestamp',new Date().toISOString());
+
+        fetch(SCRIPT_URL,{method:'POST',body:formData,mode:'no-cors'})
+            .then(()=>console.log('Data sent to Google Sheet'))
+            .catch(err=>console.error('Sheet error:',err));
+
         const msg=encodeURIComponent(`Hello Ma'am,\n\nI am interested in your women-only program. Here are my details:\n\nName: ${name}\nPhone: ${phone}\nAge: ${age}\nGender: ${gender}\nProfession: ${profession}\n\nPlease share next steps. Thank you!`);
-        // Only Contact tracking - NO Lead tracking (cost kam karne ke liye)
+
         if(typeof fbq!=='undefined'){fbq('track','Contact');}
+
         window.open(`https://wa.me/${WA_NUMBER_INT}?text=${msg}`,'_blank');
         closeForm();
     });
