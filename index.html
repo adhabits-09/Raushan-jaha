@@ -496,6 +496,8 @@
 
     function openForm(source='site'){
         sourceInfo.value=source;
+        // Reset deduplication flag when opening form fresh
+        contactEventFired = false;
         formBackdrop.classList.add('show');
         formContainer.classList.add('show');
         document.body.style.overflow='hidden';
@@ -505,6 +507,8 @@
         formContainer.classList.remove('show');
         document.body.style.overflow='';
         setTimeout(()=>mainForm.reset(),300);
+        // Reset deduplication flag when closing form
+        contactEventFired = false;
     }
     function openPrivacy(){
         privacyModal.classList.add('show');
@@ -522,14 +526,27 @@
         const trigger=e.target.closest('.open-any');
         if(trigger&&!trigger.closest('#formContainer')){e.preventDefault();openForm(trigger.dataset.source||'Website');}
     });
+    // Deduplication flag - prevents double Contact event firing
+    let contactEventFired = false;
+
     mainForm.addEventListener('submit',(e)=>{
         e.preventDefault();
+
+        // Prevent duplicate submissions
+        if(contactEventFired) {
+            console.log('Contact event already fired - skipping duplicate');
+            return;
+        }
+
         const name=document.getElementById('inp_name').value.trim();
         const phone=document.getElementById('inp_phone').value.replace(/\D/g,'');
         const age=document.getElementById('inp_age').value;
         const gender=document.getElementById('inp_gender').value;
         const profession=document.getElementById('inp_profession').value;
         if(!name||phone.length<6||!age||!gender||!profession){alert('Please fill all fields correctly.');return;}
+
+        // Generate unique event_id for deduplication
+        const eventId = 'contact_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
 
         const formData=new FormData();
         formData.append('name',name);
@@ -539,6 +556,7 @@
         formData.append('profession',profession);
         formData.append('source',sourceInfo.value);
         formData.append('timestamp',new Date().toISOString());
+        formData.append('eventId',eventId);
 
         fetch(SCRIPT_URL,{method:'POST',body:formData,mode:'no-cors'})
             .then(()=>console.log('Data sent to Google Sheet'))
@@ -546,10 +564,20 @@
 
         const msg=encodeURIComponent(`Hello Ma'am,\n\nI am interested in your women-only program. Here are my details:\n\nName: ${name}\nPhone: ${phone}\nAge: ${age}\nGender: ${gender}\nProfession: ${profession}\n\nPlease share next steps. Thank you!`);
 
-        if(typeof fbq!=='undefined'){fbq('track','Contact');}
+        // Fire Contact event ONLY ONCE with event_id for deduplication
+        if(typeof fbq!=='undefined' && !contactEventFired){
+            contactEventFired = true;
+            fbq('track','Contact', {}, {eventID: eventId});
+            console.log('Contact event fired with ID:', eventId);
+        }
 
         window.open(`https://wa.me/${WA_NUMBER_INT}?text=${msg}`,'_blank');
         closeForm();
+
+        // Reset flag after 3 seconds to allow future form submissions
+        setTimeout(() => {
+            contactEventFired = false;
+        }, 3000);
     });
     document.addEventListener('keydown',(e)=>{
         if(e.key==='Escape'){closeForm();closePrivacy();}
